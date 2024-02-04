@@ -1,0 +1,26 @@
+.contactForm {
+  display: flex;
+  padding: 25px;
+  border: 1px dotted rgb(184, 120, 120);
+  border-radius: 25px;
+  gap: 8px;
+}
+
+.input {
+  border: none;
+  border-radius: 15px;
+  padding: 10px;
+  outline-color: aquamarine;
+}
+
+.button {
+  background-color: orangered;
+  border: none;
+  border-radius: 25px;
+  padding: 10px;
+  color: white;
+}
+
+.button:hover {
+  scale: 1.1;
+}
