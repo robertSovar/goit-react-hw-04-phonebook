@@ -5,6 +5,9 @@ import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 import styles from './App.module.css';
+
+const SAVED_CONTACTS = 'contact';
+
 export class App extends Component {
   state = {
     contacts: [
@@ -15,6 +18,20 @@ export class App extends Component {
     ],
     filter: '',
   };
+
+  componentDidMount() {
+    const data = localStorage.getItem(SAVED_CONTACTS);
+
+    if (data) {
+      this.setState({ contacts: JSON.parse(data) });
+    }
+  }
+
+  componentDidUpdate(_prevProps, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem(SAVED_CONTACTS, JSON.stringify(this.state.contacts));
+    }
+  }
 
   formSubmit = ({ name, number }) => {
     const contact = {
